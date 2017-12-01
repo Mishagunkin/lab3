@@ -2,6 +2,7 @@ import base_client
 import json
 import get_user_id
 import sys
+import random
 import matplotlib.pyplot as plt
 import numpy as np
 from _datetime import datetime
@@ -74,7 +75,7 @@ class GetFriends(base_client.BaseClient):
 
 
 g = get_user_id.GetUserId()
-g.user_ids = "onlypassion"
+g.user_ids = "gunkinmisha"
 user = g.execute()
 print(user)
 
@@ -94,8 +95,20 @@ for f in friends["response"]:
             ages.append(calculate_age(datetime.strptime(f["bdate"], "%d.%m.%Y")))
 
 print(ages)
-draw_distribution(ages, True)
+year = set()
+years = []
 
+for i in range(1001):
+    years.append(random.randint(0,100))
+year = set(years)
+d = {}
+for i in years:
+    if i not in d.keys():
+        d[i] = 1;
+    else:
+        d[i] += 1;
+print(d)
+#draw_distribution(ages, True)
 
 plt.show()
 
